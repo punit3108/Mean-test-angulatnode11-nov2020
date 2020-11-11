@@ -1,0 +1,24 @@
+<a [routerLink]="['/createUser']"> Create User</a>
+<!-- {{users  | json }} -->
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact Number</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user.FirstName}} {{user.LastName}}</td>
+        <td>{{user.Email_id}}</td>
+        <td>{{user.ContactNumber}}</td>
+        <td>
+            <button type="button"   (click)="edit(user)" class="btn-sm btn btn-warning" title="Edit">
+                <span>Edit</span>
+            </button>&nbsp;
+            <button type="button"  (click)="delete(user)" class="btn-sm btn btn-warning" title="Edit">
+                <span>Delete</span>
+            </button>
+        </td>
+    </tr>
+
+</table>

@@ -1,0 +1,136 @@
+
+<h1>{{errMSg}}</h1>
+<form [formGroup]="addUser" class="well">
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="form-control-label">First Name</label>
+                <span _ngcontent-c2="" style="color: red;">*</span>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <input type="text" [formControl]="addUser.controls['FirstName']" class="form-control"
+                        style="padding:6px;">
+                    <div *ngIf="addUser.controls['FirstName'].hasError('pattern')" class="form-control-error-custom">
+                        FirstName is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['FirstName'].hasError('required') && addUser.controls['FirstName'].touched"
+                        class="form-control-error-custom">
+                        FirstName is required.
+                    </div>
+
+                    <div *ngIf="!addUser.controls['FirstName'].hasError('required') && addUser.controls['FirstName'].hasError('whitespace') && addUser.controls['FirstName'].touched"
+                        class="form-control-error-custom">
+                        FirstName is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['FirstName'].hasError('maxlength')" class="form-control-error-custom">
+                        FirstName must be less than 50 characters.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="form-control-label">Last Name</label>
+                <span _ngcontent-c2="" style="color: red;">*</span>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <input type="text" [formControl]="addUser.controls['LastName']" class="form-control"
+                        style="padding:6px;">
+                    <div *ngIf="addUser.controls['LastName'].hasError('pattern')" class="form-control-error-custom">
+                        LastName is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['LastName'].hasError('required') && addUser.controls['LastName'].touched"
+                        class="form-control-error-custom">
+                        LastName is required.
+                    </div>
+
+                    <div *ngIf="!addUser.controls['LastName'].hasError('required') && addUser.controls['LastName'].hasError('whitespace') && addUser.controls['LastName'].touched"
+                        class="form-control-error-custom">
+                        LastName is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['LastName'].hasError('maxlength')" class="form-control-error-custom">
+                        LastName must be less than 50 characters.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="form-control-label">Email</label>
+                <span _ngcontent-c2="" style="color: red;">*</span>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <input type="text" [formControl]="addUser.controls['Email_id']" class="form-control"
+                        style="padding:6px;">
+                    <div *ngIf="addUser.controls['Email_id'].hasError('required') && addUser.controls['Email_id'].touched"
+                        class="form-control-error-custom">
+                        Email id required.
+                    </div>
+                    <div *ngIf="addUser.controls['Email_id'].hasError('pattern')" class="form-control-error-custom">
+                        Email ID is not valid.
+                    </div>
+                    <!-- <div *ngIf="checkUniqueEmail" class="form-control-error-custom">
+
+                        This Email id is already exist.
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="form-control-label">Phone number</label>
+                <span _ngcontent-c2="" style="color: red;">*</span>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <input type="text" (keydown)="onlyNumber($event)" [formControl]="addUser.controls['ContactNumber']" class="form-control"
+                        style="padding:6px;">
+                    <div *ngIf="addUser.controls['ContactNumber'].hasError('pattern')"
+                        class="form-control-error-custom">
+                        ContactNumber is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['ContactNumber'].hasError('required') && addUser.controls['ContactNumber'].touched"
+                        class="form-control-error-custom">
+                        ContactNumber is required.
+                    </div>
+
+                    <div *ngIf="!addUser.controls['ContactNumber'].hasError('required') && addUser.controls['ContactNumber'].hasError('whitespace') && addUser.controls['ContactNumber'].touched"
+                        class="form-control-error-custom">
+                        ContactNumber is not valid.
+                    </div>
+                    <div *ngIf="addUser.controls['ContactNumber'].hasError('maxlength')"
+                        class="form-control-error-custom">
+                        ContactNumber must be less than 50 characters.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div>
+        <button id="btnSaveMeeting" type="button" *ngIf="!isEdit" class="btn btn-sm btn-primary"
+            [disabled]="!addUser.valid" (click)="addUserMethod()">
+            <i class="fa fa-save"></i>Save</button>
+
+        <button id="btnSaveMeeting" type="button" *ngIf="isEdit" class="btn btn-sm btn-primary"
+            [disabled]="!addUser.valid" (click)="addUserMethod()">
+            <i class="fa fa-save"></i>Update</button>
+
+        <button type="button"  [routerLink]="['/list']" class="btn-sm btn btn-default" data-toggle="modal" data-target="#clearMeetingDataModal">
+            <i class="fa fa-refresh"></i>Cancel</button>
+    </div>
+
+
+
+
+</form>
